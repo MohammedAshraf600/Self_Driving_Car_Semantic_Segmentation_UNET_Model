@@ -27,8 +27,6 @@ Training Results
 | Learning Rate | 0.0010|
 
 
- ![medicine-recommendation-system - Google Chrome 9_23_2024 1_24_13 PM](https://github.com/user-attachments/assets/0838f825-a5ba-4b46-9cdb-f58fe4f94b42)
-
 
 3. Visualization and Evaluation
 The following screenshots display predictions from the validation dataset, comparing the ground truth and the model's predicted segmentation:
