@@ -1,54 +1,108 @@
-Self-Driving Cars Using Semantic Segmentation with U-Net Model
-Introduction
-The rise of autonomous vehicles has revolutionized modern transportation, with semantic segmentation playing a crucial role in enhancing the perception capabilities of self-driving cars. Semantic segmentation enables these cars to accurately distinguish between different elements in the environment, such as roads, vehicles, pedestrians, and obstacles, by classifying each pixel in an image.
+# Self-Driving Cars Using Semantic Segmentation with U-Net Model
 
-In this project, I utilized a U-Net architecture for semantic segmentation to segment road scenes, thereby providing self-driving cars with a more detailed understanding of their surroundings. The model was designed to classify each pixel in an image into one of 13 predefined classes, facilitating the creation of a robust perception system for autonomous vehicles.
-Methodology
-1. Model Architecture
-The U-Net architecture used in this project follows an encoder-decoder structure, featuring convolutional and upsampling blocks to capture and recover spatial information effectively.
-Conv Block:
-The Conv block consists of two convolutional layers followed by batch normalization and Leaky ReLU activation. The dropout probability and max pooling are applied conditionally.
-Upsampling Block:
-The upsampling block combines feature maps from the encoder with feature maps from the decoder, followed by two convolutional layers.
-U-Net Model:
-The U-Net model is constructed by stacking downsampling conv blocks, followed by bottleneck layers, and upsampling blocks to recover spatial resolution.
-2. Training
-The model was compiled with the Adam optimizer and Sparse Categorical Crossentropy loss function, ensuring pixel-wise classification. The learning rate was set to 0.001, and the model was trained for 20 epochs.
-• Learning Rate: 0.001
-• Epochs: 20
-• Loss Function: Sparse Categorical Crossentropy
-• Metrics: Accuracy
-Training Results
+## Introduction
 
-| Metric        | Value |
-|---------------|-------|
-| Accuracy      | 97.60%|
-| Validation Loss| 0.1860 |
-| Learning Rate | 0.0010|
+The rapid advancement of autonomous vehicles has transformed modern transportation systems. One of the most critical components enabling self-driving cars to perceive and understand their surroundings is **semantic segmentation**. This technique allows a model to classify every pixel in an image into meaningful categories such as roads, vehicles, pedestrians, buildings, and obstacles.
 
+In this project, a **U-Net architecture** was implemented to perform semantic segmentation on road scene images. The objective was to enhance environmental perception for self-driving cars by accurately classifying each pixel into one of **13 predefined classes**, contributing to a more reliable and intelligent autonomous driving system.
 
+---
 
+## Methodology
 
+### 1. Model Architecture
 
-3. Visualization and Evaluation
-The following screenshots display predictions from the validation dataset, comparing the ground truth and the model's predicted segmentation:
+The implemented U-Net model follows a classic **encoder–decoder architecture** designed to efficiently capture contextual information and restore spatial resolution for precise pixel-level classification.
 
-Training & Validation Loss Plot:
+#### Conv Block
 
+Each convolutional block consists of:
 
-![UNETmodel_Semanticesegmentation-MohamedAshraf-Depi - Google Chrome 10_18_2024 4_29_02 PM](https://github.com/user-attachments/assets/c72e9ea9-cc08-4e5e-818d-c2c2e6c51ae7)
+* Two convolutional layers
+* Batch normalization
+* Leaky ReLU activation
+* Optional dropout for regularization
+* Conditional max pooling for downsampling
 
+This structure enables effective feature extraction while reducing overfitting.
 
- 
-Training & Validation Accuracy Plot:
+#### Upsampling Block
 
-![UNETmodel_Semanticesegmentation-MohamedAshraf-Depi - Google Chrome 10_18_2024 4_30_43 PM](https://github.com/user-attachments/assets/894e2a27-58f0-48d7-9fce-a3300a44a505)
+The upsampling block performs:
 
- 
-Showing some Predictions using the model after training 
+* Upsampling of feature maps
+* Concatenation with corresponding encoder feature maps (skip connections)
+* Two convolutional layers to refine spatial details
 
-![UNETmodel_Semanticesegmentation-MohamedAshraf-Depi - Google Chrome 10_18_2024 4_31_04 PM](https://github.com/user-attachments/assets/5b7daac0-b139-4d39-b6a5-8a6adc19bf5d)
+These skip connections help preserve fine-grained information lost during downsampling.
 
+#### U-Net Model Structure
 
-Conclusion
-This project demonstrates how a U-Net model can be effectively applied to semantic segmentation for self-driving cars. The model achieved an accuracy of 97.60%, with low validation loss, indicating its strong potential for real-world application in autonomous vehicles. Future improvements could focus on optimizing the architecture and integrating the model into a broader self-driving system.
+The full U-Net architecture is built by:
+
+* Stacking multiple downsampling convolutional blocks (encoder)
+* Adding bottleneck layers at the deepest level
+* Applying symmetric upsampling blocks (decoder) to recover spatial resolution
+
+This design ensures accurate segmentation by combining global context with local details.
+
+---
+
+### 2. Model Training
+
+The model was trained using the **Adam optimizer** and **Sparse Categorical Crossentropy** loss function, which is well-suited for multi-class pixel-wise classification.
+
+**Training Configuration:**
+
+* Learning Rate: 0.001
+* Epochs: 20
+* Loss Function: Sparse Categorical Crossentropy
+* Metric: Accuracy
+
+#### Training Results
+
+| Metric          | Value  |
+| --------------- | ------ |
+| Accuracy        | 97.60% |
+| Validation Loss | 0.1860 |
+| Learning Rate   | 0.001  |
+
+The high accuracy and low validation loss indicate strong generalization performance on unseen data.
+
+---
+
+### 3. Visualization and Evaluation
+
+Model performance was evaluated visually by comparing predicted segmentation masks with ground truth labels from the validation dataset.
+
+#### Training & Validation Loss
+
+The loss curves demonstrate stable convergence with no significant overfitting.
+
+![Training & Validation Loss](https://github.com/user-attachments/assets/c72e9ea9-cc08-4e5e-818d-c2c2e6c51ae7)
+
+#### Training & Validation Accuracy
+
+Accuracy curves show consistent improvement throughout training, confirming effective learning.
+
+![Training & Validation Accuracy](https://github.com/user-attachments/assets/894e2a27-58f0-48d7-9fce-a3300a44a505)
+
+#### Sample Predictions
+
+The following visualization illustrates model predictions compared to ground truth segmentation masks, highlighting accurate class separation and boundary detection.
+
+![Model Predictions](https://github.com/user-attachments/assets/5b7daac0-b139-4d39-b6a5-8a6adc19bf5d)
+
+---
+
+## Conclusion
+
+This project demonstrates the effectiveness of the **U-Net architecture** for semantic segmentation in self-driving car applications. Achieving an accuracy of **97.60%** with low validation loss confirms the model’s strong capability in understanding complex road scenes.
+
+Future improvements may include:
+
+* Architectural optimization
+* Training with larger and more diverse datasets
+* Integration into a full autonomous driving pipeline
+
+Overall, the project highlights the significant role of deep learning–based semantic segmentation in advancing autonomous vehicle perception systems.
