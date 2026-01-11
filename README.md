@@ -28,6 +28,8 @@ Training Results
 
 
 
+
+
 3. Visualization and Evaluation
 The following screenshots display predictions from the validation dataset, comparing the ground truth and the model's predicted segmentation:
 
